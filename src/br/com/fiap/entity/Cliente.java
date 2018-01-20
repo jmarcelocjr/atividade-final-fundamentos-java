@@ -35,7 +35,20 @@ public class Cliente {
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "cliente")
 	private List<Servico> servicos;
+	
+	public Cliente() {
+	}
 
+	public Cliente(String nome, String endereco, LocalDateTime dataCadastro, int diaFaturamento,
+			List<Servico> servicos) {
+		super();
+		this.nome = nome;
+		this.endereco = endereco;
+		this.dataCadastro = dataCadastro;
+		this.diaFaturamento = diaFaturamento;
+		this.servicos = servicos;
+	}
+	
 	public String getNome() {
 		return nome;
 	}

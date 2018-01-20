@@ -32,6 +32,17 @@ public class Servico {
 	@JoinColumn(name="id_cliente")
 	private Cliente cliente;
 
+	public Servico() {
+	}
+	
+	public Servico(String descricao, double valor, LocalDateTime dataAtivacao, Cliente cliente) {
+		super();
+		this.descricao = descricao;
+		this.valor = valor;
+		this.dataAtivacao = dataAtivacao;
+		this.cliente = cliente;
+	}
+
 	public int getId() {
 		return id;
 	}
