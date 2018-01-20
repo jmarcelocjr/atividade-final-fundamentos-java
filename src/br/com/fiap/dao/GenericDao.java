@@ -29,7 +29,9 @@ public class GenericDao<T> implements Dao<T> {
 	@SuppressWarnings("unchecked") @Override
 	public List<T> listar() {
 		entityManager = this.getEntityManger();
-		return entityManager.createQuery("From " + this.classe.getSimpleName() + " classe").getResultList();
+		List<T> lista = entityManager.createQuery("From " + this.classe.getSimpleName() + " classe").getResultList();
+		entityManager.close();
+		return lista;
 	}
 	
 	@Override

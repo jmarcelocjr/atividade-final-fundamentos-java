@@ -1,10 +1,9 @@
 package br.com.fiap.entity;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,16 +25,16 @@ public class Servico {
 	private double valor;
 	
 	@Column
-	private LocalDateTime dataAtivacao;
+	private LocalDate dataAtivacao;
 	
-	@ManyToOne(fetch = FetchType.LAZY) 
+	@ManyToOne() 
 	@JoinColumn(name="id_cliente")
 	private Cliente cliente;
 
 	public Servico() {
 	}
 	
-	public Servico(String descricao, double valor, LocalDateTime dataAtivacao, Cliente cliente) {
+	public Servico(String descricao, double valor, LocalDate dataAtivacao, Cliente cliente) {
 		super();
 		this.descricao = descricao;
 		this.valor = valor;
@@ -67,11 +66,11 @@ public class Servico {
 		this.valor = valor;
 	}
 
-	public LocalDateTime getDataAtivacao() {
+	public LocalDate getDataAtivacao() {
 		return dataAtivacao;
 	}
 
-	public void setDataAtivacao(LocalDateTime dataAtivacao) {
+	public void setDataAtivacao(LocalDate dataAtivacao) {
 		this.dataAtivacao = dataAtivacao;
 	}
 

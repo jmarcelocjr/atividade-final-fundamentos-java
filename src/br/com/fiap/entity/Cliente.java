@@ -1,6 +1,7 @@
 package br.com.fiap.entity;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -28,25 +29,25 @@ public class Cliente {
 	private String endereco;
 
 	@Column
-	private LocalDateTime dataCadastro;
+	private LocalDate dataCadastro;
 	
 	@Column
 	private int diaFaturamento;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "cliente")
+	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER,mappedBy = "cliente")
 	private List<Servico> servicos;
 	
 	public Cliente() {
+		super();
+		this.servicos = new ArrayList<>();
 	}
 
-	public Cliente(String nome, String endereco, LocalDateTime dataCadastro, int diaFaturamento,
-			List<Servico> servicos) {
-		super();
+	public Cliente(String nome, String endereco, LocalDate dataCadastro, int diaFaturamento) {
+		this();
 		this.nome = nome;
 		this.endereco = endereco;
 		this.dataCadastro = dataCadastro;
 		this.diaFaturamento = diaFaturamento;
-		this.servicos = servicos;
 	}
 	
 	public String getNome() {
@@ -65,11 +66,11 @@ public class Cliente {
 		this.endereco = endereco;
 	}
 
-	public LocalDateTime getDataCadastro() {
+	public LocalDate getDataCadastro() {
 		return dataCadastro;
 	}
 
-	public void setDataCadastro(LocalDateTime dataCadastro) {
+	public void setDataCadastro(LocalDate dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
 
